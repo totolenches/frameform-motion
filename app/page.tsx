@@ -1,77 +1,100 @@
-export default function DroneStudioLanding() {
+"use client";
+import Lenis from "lenis";
+import { useEffect } from "react";
+export default function Home() {
+  useEffect(() => {
+  const lenis = new Lenis();
+
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  return () => {
+    lenis.destroy();
+  };
+}, []);
   return (
-    <div className="min-h-screen bg-black text-white font-sans overflow-hidden">
-      <section className="relative h-screen w-full overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=2070&auto=format&fit=crop"
-          alt="Cinematic Architecture"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+    <main className="relative bg-black text-white">
+      
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center scale-105"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=2000&auto=format&fit=crop')",
+        }}
+      />
 
-        <div className="absolute inset-0 bg-black/55" />
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/60" />
 
-        <header className="absolute top-0 left-0 w-full z-20 px-8 md:px-14 py-10 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl tracking-[0.35em] font-light">
-              FRAMEFORM
-            </h1>
+      {/* Content */}
+      <section className="relative z-10 flex min-h-screen flex-col items-center justify-center text-center px-6">
+        
+        <p className="mb-4 text-sm uppercase tracking-[0.4em] text-zinc-400">
+          Architecture • Automotive • Brand Films
+        </p>
 
-            <p className="text-sm tracking-[0.5em] text-zinc-300 mt-1">
-              MOTION
-            </p>
-          </div>
+        <h1 className="text-6xl md:text-8xl font-light tracking-[0.3em]">
+          FRAMEFORM
+        </h1>
 
-          <nav className="hidden md:flex items-center gap-12 text-sm tracking-[0.25em] uppercase text-zinc-200">
-            <a href="#" className="hover:text-white transition">
-              Work
-            </a>
+        <p className="mt-6 max-w-xl text-zinc-300 text-sm md:text-base leading-relaxed">
+          Cinematic drone films and luxury visual storytelling
+          crafted for architecture, automotive and modern brands.
+        </p>
 
-            <a href="#" className="hover:text-white transition">
-              About
-            </a>
+        <button className="mt-10 border border-white/30 px-8 py-4 uppercase tracking-[0.3em] text-sm transition hover:bg-white hover:text-black">
+          Enter Experience
+        </button>
 
-            <a href="#" className="hover:text-white transition">
-              Services
-            </a>
-
-            <a href="#" className="hover:text-white transition">
-              Contact
-            </a>
-          </nav>
-        </header>
-
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-          <p className="uppercase tracking-[0.45em] text-zinc-300 text-sm mb-8">
-            Cinematic Visual Storytelling
-          </p>
-
-          <h2 className="text-6xl md:text-[10rem] font-extralight tracking-[0.22em] leading-none">
-            FRAMEFORM
-          </h2>
-
-          <h3 className="text-2xl md:text-5xl tracking-[0.7em] font-extralight mt-4 text-zinc-200">
-            MOTION
-          </h3>
-
-          <div className="w-20 h-px bg-white/40 my-10" />
-
-          <p className="uppercase tracking-[0.35em] text-zinc-300 text-sm md:text-base">
-            Architecture • Automotive • Brand Films
-          </p>
-
-          <button className="mt-14 border border-white/30 px-10 py-4 uppercase tracking-[0.3em] text-sm hover:bg-white hover:text-black transition duration-500 rounded-full">
-            Enter Experience
-          </button>
-
-          <div className="absolute bottom-12 flex flex-col items-center gap-4 text-zinc-300">
-            <div className="w-[1px] h-14 bg-white/30" />
-
-            <p className="uppercase tracking-[0.3em] text-xs">
-              Scroll
-            </p>
-          </div>
-        </div>
       </section>
+<section className="relative min-h-screen bg-zinc-950 px-10 py-32">
+  
+  <div className="mx-auto max-w-6xl">
+    
+    <p className="mb-6 text-sm uppercase tracking-[0.3em] text-zinc-500">
+      Selected Work
+    </p>
+
+    <h2 className="mb-20 text-5xl md:text-7xl font-light tracking-[0.15em]">
+      Cinematic
+      <br />
+      Experiences
+    </h2>
+
+    <div className="grid gap-8 md:grid-cols-2">
+      
+      <div className="group overflow-hidden rounded-3xl">
+        <img
+          src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=2000&auto=format&fit=crop"
+          className="h-[500px] w-full object-cover transition duration-700 group-hover:scale-105"
+        />
+      </div>
+
+      <div className="flex flex-col justify-center">
+        <p className="mb-6 text-zinc-400 uppercase tracking-[0.3em] text-sm">
+          Architecture Film
+        </p>
+
+        <h3 className="mb-8 text-4xl font-light">
+          Modern spaces deserve cinematic storytelling.
+        </h3>
+
+        <p className="max-w-lg text-zinc-500 leading-relaxed">
+          Luxury drone cinematography crafted for premium
+          architecture, real estate and modern visual branding.
+        </p>
+      </div>
+
     </div>
+
+  </div>
+
+</section>
+    </main>
   );
 }
